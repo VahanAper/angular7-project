@@ -1,6 +1,10 @@
+import { EventEmitter } from '@angular/core';
+
 import { Recipe } from './recipe.model';
 
 export class RecipeService {
+  selectedRecipe = new EventEmitter<Recipe>();
+
   private recipes: Recipe[] = [
     new Recipe(
       'A test Recipe1',
@@ -21,8 +25,6 @@ export class RecipeService {
 
   getRecipes() {
     // A hack to get new referance
-    console.log('slice ::: ', this.recipes.slice());
-
     return this.recipes.slice();
   }
 }
